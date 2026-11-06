@@ -1,0 +1,32 @@
+name: Code quality and smoke tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  php-and-js:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.1', '8.2', '8.3', '8.4']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: none
+      - name: PHP syntax
+        run: |
+          php -l light-auth.php
+          php -l uninstall.php
+          php -l tests/smoke.php
+      - name: PHP smoke tests
+        run: php tests/smoke.php
+      - name: JavaScript syntax
+        run: |
+          node --check script.js
+          node --check admin.js
