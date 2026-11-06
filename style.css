@@ -1,0 +1,1088 @@
+/*
+ * فونت: یکان بخ (Yekan Bakh)
+ * فایل‌های فونت از پوشه fonts افزونه خوانده و با نام 'LA Yekan Bakh' تعریف می‌شوند (light-auth.php).
+ * اگر قالب سایت خودش یکان بخ را با یکی از نام‌های رایج بارگذاری کرده باشد، همان استفاده می‌شود.
+ */
+
+/* =========================================================
+   توکن‌ها — پیش‌فرض: تم تیره
+   تم روشن با دکمه داخل فرم انتخاب می‌شود (html[data-la-theme="light"])
+   ========================================================= */
+.la-box,
+.la-trigger-btn,
+.la-modal-overlay,
+.la-user-menu {
+    /* رنگ برند */
+    --la-accent: #e11d48;
+    --la-accent-hover: #c8133b;
+    --la-accent-soft: rgba(225, 29, 72, 0.13);
+    --la-accent-ring: rgba(225, 29, 72, 0.28);
+    --la-on-accent: #ffffff;
+
+    /* سطوح — زغالی گرم، هم‌خانواده با قرمز برند */
+    --la-bg-card: #18151a;
+    --la-bg-input: #221e25;
+    --la-bg-input-focus: #1c191f;
+    --la-bg-hover: #2a252d;
+    --la-border: #2e2832;
+    --la-border-strong: #403844;
+
+    /* متن */
+    --la-text: #f7f3f5;
+    --la-text-soft: #d6cdd2;
+    --la-text-muted: #9b9098;
+    --la-placeholder: #6b6169;
+    --la-link: #fb7185;
+
+    /* وضعیت */
+    --la-error: #fda4af;
+    --la-error-bg: rgba(225, 29, 72, 0.12);
+    --la-error-border: rgba(251, 113, 133, 0.35);
+    --la-success: #5eead4;
+    --la-success-bg: rgba(45, 212, 191, 0.12);
+    --la-success-border: rgba(45, 212, 191, 0.32);
+
+    --la-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.035);
+    --la-shadow-sm: 0 16px 40px -12px rgba(0, 0, 0, 0.6);
+    --la-overlay: rgba(10, 8, 11, 0.72);
+
+    /* تایپوگرافی */
+    --la-font: 'LA Yekan Bakh', 'Yekan Bakh', 'YekanBakh', 'Yekan Bakh FaNum', 'YekanBakhFaNum', 'yekan-bakh', Tahoma, sans-serif;
+    --la-fs-xs: 12px;
+    --la-fs-sm: 13.5px;
+    --la-fs-md: 15px;
+    --la-fs-num: 22px;
+    --la-fs-title: 28px;
+
+    /* گوشه‌ها: هر سطح شعاع خودش را دارد */
+    --la-r-box: 26px;
+    --la-r-field: 14px;
+    --la-r-tool: 10px;
+}
+
+html[data-la-theme="light"] .la-box,
+html[data-la-theme="light"] .la-trigger-btn,
+html[data-la-theme="light"] .la-modal-overlay,
+html[data-la-theme="light"] .la-user-menu {
+    --la-accent-soft: rgba(225, 29, 72, 0.08);
+    --la-accent-ring: rgba(225, 29, 72, 0.22);
+
+    --la-bg-card: #ffffff;
+    --la-bg-input: #f7f3f5;
+    --la-bg-input-focus: #ffffff;
+    --la-bg-hover: #f3eef1;
+    --la-border: #ede5e9;
+    --la-border-strong: #ddd2d8;
+
+    --la-text: #1c1519;
+    --la-text-soft: #4a3f45;
+    --la-text-muted: #7d7177;
+    --la-placeholder: #b3a8ae;
+    --la-link: #d0103c;
+
+    --la-error: #c0103a;
+    --la-error-bg: rgba(225, 29, 72, 0.06);
+    --la-error-border: rgba(225, 29, 72, 0.25);
+    --la-success: #0f766e;
+    --la-success-bg: rgba(20, 184, 166, 0.09);
+    --la-success-border: rgba(20, 184, 166, 0.3);
+
+    --la-shadow: 0 30px 70px -24px rgba(60, 20, 40, 0.22), 0 0 0 1px rgba(60, 20, 40, 0.04);
+    --la-shadow-sm: 0 14px 36px -12px rgba(60, 20, 40, 0.2);
+    --la-overlay: rgba(28, 21, 25, 0.45);
+}
+
+/* =========================================================
+   باکس اصلی
+   ========================================================= */
+.la-box {
+    position: relative;
+    width: 100%;
+    max-width: 408px;
+    margin: 40px auto;
+    padding: 22px 28px 30px;
+    background: var(--la-bg-card);
+    border: 1px solid var(--la-border);
+    border-radius: var(--la-r-box);
+    box-shadow: var(--la-shadow);
+    direction: rtl;
+    text-align: right;
+    box-sizing: border-box;
+    font-family: var(--la-font);
+    color: var(--la-text);
+    line-height: 1.6;
+    overflow: hidden;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.la-box * {
+    font-family: var(--la-font);
+    box-sizing: border-box;
+}
+
+.la-box [hidden] {
+    display: none !important;
+}
+
+/* =========================================================
+   نوار بالا: مراحل (راست) + ابزارها (چپ)
+   ========================================================= */
+.la-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 36px;
+    margin-bottom: 22px;
+}
+
+.la-steps {
+    display: flex;
+    gap: 6px;
+}
+
+.la-steps span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--la-border-strong);
+    transition: background-color 0.35s ease, width 0.35s ease;
+}
+
+.la-box[data-step="phone"] .la-steps span:first-child,
+.la-box[data-step="verify"] .la-steps span {
+    background: var(--la-accent);
+}
+
+.la-box[data-step="phone"] .la-steps span:first-child,
+.la-box[data-step="verify"] .la-steps span:last-child {
+    width: 44px; /* مرحله فعلی کمی بلندتر */
+}
+
+.la-box[data-step="success"] .la-steps span {
+    background: var(--la-success);
+}
+
+.la-tools {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.la-box .la-theme-toggle,
+.la-box .la-close-modal {
+    position: static;
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    border-radius: var(--la-r-tool);
+    color: var(--la-text-muted);
+    box-shadow: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.la-box .la-theme-toggle:hover,
+.la-box .la-close-modal:hover {
+    background: var(--la-bg-hover);
+    color: var(--la-text);
+}
+
+.la-box .la-theme-toggle svg {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.la-box .la-theme-toggle:active svg {
+    transform: rotate(-40deg) scale(0.85);
+}
+
+/* در تم تیره خورشید (رفتن به روشن)، در تم روشن ماه */
+.la-box .la-theme-toggle .la-ic-moon { display: none; }
+html[data-la-theme="light"] .la-box .la-theme-toggle .la-ic-sun { display: none; }
+html[data-la-theme="light"] .la-box .la-theme-toggle .la-ic-moon { display: block; }
+
+/* =========================================================
+   عنوان — تضاد وزن یکان بخ شخصیت فرم است
+   ========================================================= */
+.la-header {
+    margin-bottom: 26px;
+}
+
+.la-box .la-title {
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: var(--la-fs-title);
+    font-weight: 900;
+    line-height: 1.35;
+    letter-spacing: -0.4px;
+    color: var(--la-text);
+}
+
+.la-box .la-subtitle {
+    margin: 0;
+    max-width: 32em;
+    font-size: var(--la-fs-sm);
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--la-text-muted);
+}
+
+/* =========================================================
+   مراحل فرم
+   ========================================================= */
+.la-form {
+    display: none;
+    margin: 0;
+}
+
+.la-form.active {
+    display: block;
+    animation: laStepIn 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes laStepIn {
+    from { opacity: 0; transform: translateX(-14px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes laFadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   فیلدها
+   ========================================================= */
+.la-field {
+    margin-bottom: 18px;
+}
+
+.la-box .la-field label {
+    display: block;
+    margin: 0 0 8px;
+    font-size: var(--la-fs-sm);
+    font-weight: 600;
+    color: var(--la-text-soft);
+}
+
+.la-input-wrap {
+    position: relative;
+}
+
+.la-box .la-field input[type="text"],
+.la-box .la-field input[type="tel"] {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 56px;
+    margin: 0;
+    padding: 12px 18px;
+    background: var(--la-bg-input);
+    border: 2px solid transparent;
+    border-radius: var(--la-r-field);
+    font-size: 16px; /* کمتر از ۱۶ باعث زوم خودکار در iOS می‌شود */
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--la-text);
+    text-align: right;
+    box-shadow: none;
+    outline: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.la-box .la-field input::placeholder {
+    color: var(--la-placeholder);
+    opacity: 1;
+}
+
+.la-box .la-field input:hover {
+    background: var(--la-bg-hover);
+}
+
+.la-box .la-field input:focus {
+    background: var(--la-bg-input-focus);
+    border-color: var(--la-accent);
+    box-shadow: 0 0 0 4px var(--la-accent-ring);
+}
+
+/* شماره موبایل: عدد، عنصر اصلی این مرحله است */
+.la-box .la-field input.la-phone-input {
+    direction: ltr;
+    text-align: right;
+    padding-left: 50px;
+    font-size: var(--la-fs-num);
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-variant-numeric: tabular-nums;
+}
+
+.la-box .la-field input.la-phone-input::placeholder {
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.la-valid-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    color: var(--la-success);
+    opacity: 0;
+    transform: translateY(-50%) scale(0.4);
+    transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+}
+
+.la-input-wrap.is-valid .la-valid-icon {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+}
+
+/* کد تایید */
+.la-box .la-field input.la-otp-field {
+    min-height: 64px;
+    direction: ltr;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 16px;
+    text-indent: 16px; /* جبران فاصله انتهایی تا متن دقیقاً وسط باشد */
+    color: var(--la-text);
+    font-variant-numeric: tabular-nums;
+}
+
+.la-box .la-field input.la-otp-field::placeholder {
+    font-weight: 300;
+    color: var(--la-placeholder);
+}
+
+/* خطای فیلد */
+.la-box .la-field.has-error input,
+.la-box .la-field.has-error input:focus {
+    border-color: var(--la-error);
+}
+
+.la-box .la-field.has-error input:focus {
+    box-shadow: 0 0 0 4px var(--la-error-bg);
+}
+
+.la-box .la-field-error {
+    margin: 8px 0 0;
+    font-size: var(--la-fs-xs);
+    font-weight: 500;
+    line-height: 1.7;
+    color: var(--la-error);
+    animation: laFadeIn 0.2s ease;
+}
+
+/* =========================================================
+   شماره ارسال‌شده در مرحله دوم
+   ========================================================= */
+.la-phone-chip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: -8px 0 22px;
+    padding: 0 0 18px;
+    border-bottom: 1px dashed var(--la-border-strong);
+}
+
+.la-phone-display {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--la-text);
+    font-variant-numeric: tabular-nums;
+}
+
+.la-box .la-phone-chip .la-edit-phone {
+    margin-right: auto;
+}
+
+/* =========================================================
+   دکمه‌ها
+   ========================================================= */
+.la-box .la-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 56px;
+    margin: 0;
+    padding: 12px 18px;
+    background: var(--la-accent);
+    color: var(--la-on-accent);
+    border: 0;
+    border-radius: var(--la-r-field);
+    font-size: var(--la-fs-md);
+    font-weight: 800;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: 0;
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 10px 24px -12px var(--la-accent);
+    transition: background-color 0.2s ease, transform 0.15s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.la-box .la-btn:hover {
+    background: var(--la-accent-hover);
+    color: var(--la-on-accent);
+}
+
+.la-box .la-btn:active {
+    transform: scale(0.985);
+}
+
+.la-box .la-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+}
+
+.la-box .la-btn.is-loading {
+    cursor: progress;
+    opacity: 0.88;
+}
+
+.la-box .la-btn-soft {
+    background: var(--la-bg-input);
+    color: var(--la-text);
+    box-shadow: none;
+    justify-content: flex-start;
+    font-weight: 700;
+}
+
+.la-box .la-btn-soft .la-ic {
+    color: var(--la-accent);
+}
+
+.la-box .la-btn-soft:hover {
+    background: var(--la-bg-hover);
+    color: var(--la-text);
+}
+
+.la-box .la-btn-outline {
+    background: transparent;
+    color: var(--la-text-muted);
+    box-shadow: inset 0 0 0 1.5px var(--la-border-strong);
+    justify-content: flex-start;
+    font-weight: 700;
+}
+
+.la-box .la-btn-outline:hover {
+    background: var(--la-error-bg);
+    color: var(--la-error);
+    box-shadow: inset 0 0 0 1.5px var(--la-error-border);
+}
+
+/* دکمه‌های متنی */
+.la-box .la-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 6px 10px;
+    background: var(--la-accent-soft);
+    border: 0;
+    border-radius: 999px;
+    box-shadow: none;
+    color: var(--la-link);
+    font-size: var(--la-fs-xs);
+    font-weight: 700;
+    line-height: 1.5;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.la-box .la-link:hover {
+    background: var(--la-accent);
+    color: var(--la-on-accent);
+}
+
+.la-box .la-link:disabled {
+    opacity: 0.65;
+    cursor: progress;
+}
+
+/* فوکوس کیبورد */
+.la-box .la-btn:focus-visible,
+.la-box .la-link:focus-visible,
+.la-box .la-theme-toggle:focus-visible,
+.la-box .la-close-modal:focus-visible,
+.la-trigger-btn:focus-visible,
+.la-menu-item:focus-visible {
+    outline: 3px solid var(--la-accent-ring);
+    outline-offset: 2px;
+}
+
+/* اسپینر */
+.la-spinner {
+    display: none;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: laSpin 0.7s linear infinite;
+}
+
+.la-link .la-spinner {
+    width: 13px;
+    height: 13px;
+}
+
+.is-loading > .la-spinner {
+    display: inline-block;
+}
+
+@keyframes laSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* لرزش هنگام خطا */
+.la-shake {
+    animation: laShake 0.4s ease;
+}
+
+@keyframes laShake {
+    0%, 100% { transform: translateX(0); }
+    20%      { transform: translateX(-6px); }
+    40%      { transform: translateX(6px); }
+    60%      { transform: translateX(-4px); }
+    80%      { transform: translateX(4px); }
+}
+
+/* =========================================================
+   تایمر و ارسال مجدد
+   ========================================================= */
+.la-footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 32px;
+    margin-top: 18px;
+    font-size: var(--la-fs-xs);
+    color: var(--la-text-muted);
+}
+
+.la-timer {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.la-timer b {
+    min-width: 3.2em;
+    font-size: var(--la-fs-sm);
+    font-weight: 800;
+    color: var(--la-text);
+    font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================
+   پیام‌های کلی
+   ========================================================= */
+.la-message {
+    margin-bottom: 18px;
+    padding: 12px 16px;
+    border-radius: var(--la-r-field);
+    border-right: 3px solid currentColor;
+    font-size: var(--la-fs-sm);
+    font-weight: 500;
+    line-height: 1.75;
+    animation: laFadeIn 0.25s ease;
+}
+
+.la-message.error {
+    background: var(--la-error-bg);
+    color: var(--la-error);
+}
+
+.la-message.success {
+    background: var(--la-success-bg);
+    color: var(--la-success);
+}
+
+/* =========================================================
+   حالت موفقیت
+   ========================================================= */
+.la-box[data-step="success"] .la-header,
+.la-box[data-step="success"] .la-message,
+.la-box[data-step="success"] .la-form {
+    display: none !important;
+}
+
+.la-success {
+    padding: 8px 0 4px;
+    text-align: right;
+    animation: laFadeIn 0.3s ease;
+}
+
+.la-success-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 0 18px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--la-success-bg);
+    color: var(--la-success);
+    animation: laPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes laPop {
+    from { transform: scale(0.4) rotate(-12deg); opacity: 0; }
+    to   { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.la-box .la-success-title {
+    margin: 0 0 6px;
+    font-size: var(--la-fs-title);
+    font-weight: 900;
+    line-height: 1.35;
+    color: var(--la-text);
+}
+
+.la-box .la-success-text {
+    margin: 0 0 22px;
+    font-size: var(--la-fs-sm);
+    font-weight: 300;
+    color: var(--la-text-muted);
+}
+
+.la-progress {
+    height: 4px;
+    border-radius: 4px;
+    background: var(--la-bg-input);
+    overflow: hidden;
+}
+
+.la-progress span {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: 4px;
+    background: var(--la-success);
+    animation: laProgress 1s ease-in-out forwards;
+}
+
+@keyframes laProgress {
+    to { width: 100%; }
+}
+
+/* =========================================================
+   کاربر لاگین‌شده (شورت‌کد فرم)
+   ========================================================= */
+.la-topbar-spacer {
+    flex: 1;
+}
+
+.la-logged-in .la-topbar {
+    margin-bottom: 8px;
+}
+
+.la-profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 26px;
+}
+
+.la-user-avatar {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: var(--la-accent);
+    color: var(--la-on-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.la-profile-text {
+    min-width: 0;
+}
+
+.la-box .la-welcome-text {
+    margin: 0 0 2px;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1.4;
+    color: var(--la-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.la-box .la-welcome-phone {
+    margin: 0;
+    font-size: var(--la-fs-sm);
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--la-text-muted);
+    text-align: right;
+}
+
+.la-logged-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.la-box .la-ic {
+    flex-shrink: 0;
+}
+
+/* =========================================================
+   دکمه بازکننده پاپ‌آپ
+   ========================================================= */
+.la-trigger-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    margin: 0;
+    padding: 8px 18px;
+    background: var(--la-accent);
+    color: var(--la-on-accent);
+    border: 0;
+    border-radius: 12px;
+    font-family: var(--la-font);
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.4;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    direction: rtl;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 8px 20px -10px var(--la-accent);
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.la-trigger-btn:hover {
+    background: var(--la-accent-hover);
+    color: var(--la-on-accent);
+}
+
+.la-trigger-btn:active {
+    transform: scale(0.97);
+}
+
+/* =========================================================
+   منوی کاربر لاگین‌شده
+   ========================================================= */
+.la-user-menu {
+    position: relative;
+    display: inline-block;
+    direction: rtl;
+    font-family: var(--la-font);
+}
+
+.la-user-menu * {
+    box-sizing: border-box;
+    font-family: var(--la-font);
+}
+
+.la-trigger-btn.la-logged-btn {
+    padding: 5px 6px 5px 12px;
+    background: var(--la-bg-card);
+    color: var(--la-text);
+    box-shadow: inset 0 0 0 1px var(--la-border-strong);
+}
+
+.la-trigger-btn.la-logged-btn:hover,
+.la-user-menu.is-open .la-logged-btn {
+    background: var(--la-bg-hover);
+    color: var(--la-text);
+    transform: none;
+}
+
+.la-mini-avatar {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    background: var(--la-accent);
+    color: var(--la-on-accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.la-logged-name {
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+}
+
+.la-chevron {
+    display: inline-flex;
+    color: var(--la-text-muted);
+    transition: transform 0.2s ease;
+}
+
+.la-chevron .la-ic {
+    width: 16px;
+    height: 16px;
+}
+
+.la-user-menu.is-open .la-chevron {
+    transform: rotate(180deg);
+}
+
+.la-user-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 99999;
+    min-width: 236px;
+    padding: 6px;
+    background: var(--la-bg-card);
+    border: 1px solid var(--la-border);
+    border-radius: 16px;
+    box-shadow: var(--la-shadow-sm);
+    text-align: right;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+.la-user-menu.la-flip .la-user-dropdown {
+    right: auto;
+    left: 0;
+}
+
+.la-user-menu.is-open .la-user-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.la-user-dropdown-head {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 6px;
+    padding: 10px 12px 12px;
+    border-bottom: 1px dashed var(--la-border-strong);
+}
+
+.la-user-dropdown-head strong {
+    font-size: var(--la-fs-md);
+    font-weight: 900;
+    color: var(--la-text);
+}
+
+.la-user-dropdown-head span {
+    font-size: var(--la-fs-xs);
+    letter-spacing: 0.5px;
+    color: var(--la-text-muted);
+    text-align: right;
+}
+
+.la-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: var(--la-text-soft);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.la-menu-item:hover,
+.la-menu-item:focus {
+    background: var(--la-bg-hover);
+    color: var(--la-text);
+    text-decoration: none;
+}
+
+.la-menu-item-danger {
+    color: var(--la-error);
+}
+
+.la-menu-item-danger:hover,
+.la-menu-item-danger:focus {
+    background: var(--la-error-bg);
+    color: var(--la-error);
+}
+
+/* =========================================================
+   پنجره پاپ‌آپ
+   ========================================================= */
+html.la-no-scroll,
+html.la-no-scroll body {
+    overflow: hidden !important;
+}
+
+.la-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: var(--la-overlay);
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+.la-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.la-modal-container {
+    width: 100%;
+    max-width: 408px;
+    max-height: 100%;
+    transform: scale(0.95) translateY(16px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.la-modal-overlay.active .la-modal-container {
+    transform: scale(1) translateY(0);
+}
+
+.la-box.la-in-modal {
+    margin: 0;
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+/* =========================================================
+   موبایل
+   ========================================================= */
+@media (max-width: 520px) {
+    .la-box {
+        --la-fs-title: 25px;
+        margin: 24px auto;
+        padding: 18px 20px 26px;
+    }
+
+    /* پاپ‌آپ به شکل Bottom Sheet */
+    .la-modal-overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .la-modal-container {
+        max-width: none;
+        transform: translateY(100%);
+    }
+
+    .la-modal-overlay.active .la-modal-container {
+        transform: translateY(0);
+    }
+
+    .la-box.la-in-modal {
+        padding: 26px 20px calc(26px + env(safe-area-inset-bottom, 0px));
+        border-radius: 26px 26px 0 0;
+        border-bottom: 0;
+        max-height: 92vh;
+        max-height: 92dvh;
+    }
+
+    .la-box.la-in-modal::before {
+        content: '';
+        position: absolute;
+        top: 9px;
+        left: 50%;
+        width: 40px;
+        height: 4px;
+        border-radius: 4px;
+        background: var(--la-border-strong);
+        transform: translateX(-50%);
+    }
+
+    .la-user-dropdown {
+        min-width: 212px;
+    }
+}
+
+/* =========================================================
+   کاهش حرکت برای کاربرانی که در سیستم فعال کرده‌اند
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+    .la-box,
+    .la-box *,
+    .la-modal-overlay,
+    .la-modal-container,
+    .la-trigger-btn,
+    .la-user-dropdown,
+    .la-chevron {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .la-spinner {
+        animation: laSpin 1.4s linear infinite !important;
+    }
+
+    .la-progress span {
+        width: 100%;
+    }
+}
+
+/* Compact session preference; no external CSS/JS dependencies. */
+.la-box .la-remember-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 16px;
+    font-size: var(--la-fs-sm);
+    color: var(--la-text-soft);
+    cursor: pointer;
+    line-height: 1.5;
+}
+.la-box .la-remember-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin: 0;
+    accent-color: var(--la-accent);
+    cursor: pointer;
+}
+.la-box .la-field input.la-otp-field {
+    letter-spacing: 12px;
+    text-indent: 12px;
+}
